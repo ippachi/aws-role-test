@@ -2,6 +2,7 @@ package main
 
 import (
 	"log"
+	"time"
 
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/aws/session"
@@ -32,6 +33,8 @@ func main() {
 		deleteInstanceProfile(iamSvc, createInstanceProfileOutput)
 		log.Fatal(err)
 	}
+
+	time.Sleep(15 * time.Second)
 
 	err = runInstances(ec2Svc, createInstanceProfileOutput)
 
